@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEDA Bot</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Cursor Trail Styles */
+        #cursor-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .cursor-dot {
+            position: absolute;
+            width: 10px; /* Size of the dots */
+            height: 10px; /* Size of the dots */
+            background: rgba(255, 204, 0, 0.6); /* Yellow color */
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Hover effect on dots */
+        .cursor-dot:hover {
+            transform: scale(1.5);
+        }
+
+        /* Additional styles for sections */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #282c34;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        .feature {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .feature:hover {
+            background-color: #f0f0f0;
+        }
+
+        .invite-button {
+            display: inline-block;
+            background-color: #61dafb;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .invite-button:hover {
+            background-color: #21a1f1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #282c34;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-form label,
+        .feedback-form input,
+        .feedback-form textarea {
+            margin-bottom: 10px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #61dafb;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Interactive Background Layer -->
+    <div class="bg"></div>
+
+    <!-- Custom Cursor Trail -->
+    <div id="cursor-trail"></div>
+
+    <header>
+        <h1>Welcome to VEDA Bot!</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About VEDA Bot</h2>
+            <p>VEDA Bot is your ultimate Discord assistant, designed specifically for gamers and communities. With a variety of commands and features, VEDA enhances your Discord experience by providing fun, utility, and interactive elements.</p>
+            <p>Whether you want to manage your server, have fun with your friends, or stay updated with gaming news, VEDA is here to help!</p>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>✨ Currency System</h3>
+                <p>Earn and spend virtual currency by interacting with the bot. Customize your experience!</p>
+            </div>
+            <div class="feature">
+                <h3>🎮 Gaming Statistics</h3>
+                <p>Check your stats for popular games like Valorant and more!</p>
+            </div>
+            <div class="feature">
+                <h3>🔔 Game Notifications</h3>
+                <p>Stay updated with notifications for upcoming game releases and updates.</p>
+            </div>
+            <div class="feature">
+                <h3>🤖 Fun Commands</h3>
+                <p>Engage with the bot using various fun and interactive commands!</p>
+            </div>
+            <div class="feature">
+                <h3>🎉 Events & Giveaways</h3>
+                <p>Participate in community events and giveaways to win exciting prizes!</p>
+            </div>
+            <div class="feature">
+                <h3>👥 User Interaction</h3>
+                <p>Interact with other users through engaging activities and games.</p>
+            </div>
+            <div class="feature">
+                <h3>📚 Tutorials & Guides</h3>
+                <p>Access comprehensive tutorials and guides to make the most out of VEDA Bot.</p>
+            </div>
+            <div class="feature">
+                <h3>⚙️ Customization</h3>
+                <p>Customize VEDA Bot to fit your server’s unique needs and preferences.</p>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands">
+            <h2>Commands</h2>
+            <ul>
+                <li><strong>!hello</strong>: Greet the bot and receive a friendly response!</li>
+                <li><strong>!earn</strong>: Earn coins (limited to 100 coins per command).</li>
+                <li><strong>!balance</strong>: Check your current coin balance.</li>
+                <li><strong>!owner</strong>: Learn more about the bot's owner, Kushagra.</li>
+                <li><strong>!fact</strong>: Get a random fun fact about gaming!</li>
+                <li><strong>!stats [username]</strong>: Get user stats for Valorant.</li>
+                <li><strong>!leaderboard</strong>: View the top users with the most coins.</li>
+                <li><strong>!daily</strong>: Claim your daily coins every 24 hours!</li>
+                <li><strong>!help</strong>: List all available commands and their descriptions.</li>
+                <li><strong>!invite</strong>: Get the invite link to add VEDA Bot to your server.</li>
+                <li><strong>!customize</strong>: Customize VEDA Bot settings for your server.</li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <h3>How do I earn coins?</h3>
+                <p>You can earn coins by using the <strong>!earn</strong> command. Remember, you can earn a maximum of 100 coins per command!</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I check my coin balance?</h3>
+                <p>Yes! Use the <strong>!balance</strong> command to check how many coins you have.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Who is the owner of VEDA Bot?</h3>
+                <p>Kushagra is the proud creator of VEDA Bot. If you have any questions or feedback, feel free to reach out!</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is VEDA Bot free to use?</h3>
+                <p>Absolutely! VEDA Bot is free to use for everyone.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I report a bug or suggest a feature?</h3>
+                <p>You can contact us through the contact form below or join our support server.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Where can I find the bot’s invite link?</h3>
+                <p>Use the <strong>!invite</strong> command to get the link to add VEDA Bot to your server.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out!</p>
+            <form class="feedback-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 VEDA Bot. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Cursor Trail Script
+        const cursorTrail = document.getElementById("cursor-trail");
+        let cursorDots = [];
+
+        for (let i = 0; i < 10; i++) {
+            const dot = document.createElement("div");
+            dot.className = "cursor-dot";
+            cursorTrail.appendChild(dot);
+            cursorDots.push(dot);
+        }
+
+        document.addEventListener("mousemove", (event) => {
+            const { clientX, clientY } = event;
+
+            cursorDots.forEach((dot, index) => {
+                const delay = index * 50;
+                setTimeout(() => {
+                    dot.style.left = `${clientX}px`;
+                    dot.style.top = `${clientY}px`;
+                    dot.style.opacity = "1";
+                }, delay);
+                setTimeout(() => {
+                    dot.style.opacity = "0";
+                }, delay + 200);
+            });
+        });
+    </script>
+</body>
+</html>
