@@ -4,10 +4,26 @@ body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     color: #fff;
-    background: url('background.jpg') no-repeat center center fixed; /* Ensure the path is correct */
-    background-size: cover;
     overflow-y: scroll; /* Enable scrolling */
     position: relative;
+    background-color: #000; /* Fallback background color */
+}
+
+/* Video Background Styles */
+.bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    object-fit: cover;
+    filter: brightness(0.5); /* Darken the video for better text visibility */
+    transition: transform 0.1s ease;
 }
 
 /* Header Styles */
@@ -18,35 +34,76 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(10px);
+    animation: slideDown 1s ease-out;
 }
 
 header h1 {
     font-size: 3em;
     margin: 0;
     animation: fadeIn 2s ease-in-out;
+    position: relative;
+    display: inline-block;
 }
 
+/* Single Invite Button in Header */
+.invite-button {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.5s;
+    animation: pulse 2s infinite;
+}
+
+.invite-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg, #f06595, #cc5de8, #845ef7, #ff6b6b);
+}
+
+/* Navigation Styles */
 nav ul {
     list-style: none;
     padding: 10px 0;
     margin: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    animation: slideIn 1s ease-out;
 }
 
 nav ul li a {
-    color: #fff;
+    color: #61dafb;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffcc00;
+    transition: width 0.3s;
 }
 
 nav ul li a:hover {
     color: #ffcc00;
     transform: scale(1.1);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* Container Styles */
@@ -58,6 +115,9 @@ nav ul li a:hover {
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.1s ease;
+    z-index: 10; /* Ensure content is above the video */
+    position: relative;
+    animation: fadeInUp 1s ease-out;
 }
 
 /* Section Styles */
@@ -70,11 +130,25 @@ section h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #ffcc00;
+    position: relative;
+    display: inline-block;
+    animation: bounceIn 1s ease-out;
+}
+
+section h2::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: #ffcc00;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 section p {
     font-size: 1.1em;
     line-height: 1.6;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 ul {
@@ -88,6 +162,7 @@ ul li {
     padding: 10px 15px;
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 ul li:hover {
@@ -102,6 +177,7 @@ ul li:hover {
     margin: 10px 0;
     border-radius: 10px;
     transition: transform 0.3s, background-color 0.3s;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .feature:hover, .faq-item:hover, .testimonial:hover {
@@ -122,6 +198,7 @@ ul li:hover {
     padding: 10px 20px;
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.3s;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 #resources ul li:hover {
@@ -140,44 +217,30 @@ ul li:hover {
     color: #ff9900;
 }
 
-/* Invite Button Styles */
-.invite-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ffcc00;
-    color: #000;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.invite-button:hover {
-    background-color: #ff9900;
-    transform: scale(1.05);
-}
-
 /* Feedback Form Styles */
 .feedback-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     max-width: 600px;
     margin: 0 auto;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .feedback-form label {
     font-weight: bold;
+    font-size: 1.1em;
 }
 
 .feedback-form input, 
 .feedback-form textarea {
-    padding: 10px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.2);
     color: #fff;
     transition: background-color 0.3s;
+    font-size: 1em;
 }
 
 .feedback-form input:focus, 
@@ -187,14 +250,15 @@ ul li:hover {
 }
 
 .submit-button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: #ffcc00;
     color: #000;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .submit-button:hover {
@@ -207,6 +271,9 @@ footer {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px 0;
     text-align: center;
+    position: relative;
+    z-index: 100;
+    animation: slideUp 1s ease-out;
 }
 
 footer p {
@@ -272,24 +339,59 @@ a:active, button:active {
     to { opacity: 1; }
 }
 
-/* Gyro Effect Background Layer */
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: url('background.jpg') no-repeat center center;
-    background-size: cover;
-    transform: translate(-25%, -25%) rotateY(0deg) rotateX(0deg);
-    transition: transform 0.1s ease;
-    z-index: -1; /* Place behind all content */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transform: translateY(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 10px rgba(255, 204, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+    }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.5em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
     }
 
     nav ul li {
@@ -317,5 +419,19 @@ a:active, button:active {
 
     #gallery .gallery-item {
         width: 90%;
+    }
+
+    .invite-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .feedback-form input, 
+    .feedback-form textarea {
+        padding: 12px;
+    }
+
+    .submit-button {
+        padding: 12px 25px;
     }
 }
